@@ -6,16 +6,25 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state:{
-        currentJoke:'',
+        currentJoke:'This is a joke',
         allJokes:[]
     },
     mutations:{
-
+        //syncronous
+        setCurrentJoke(state, payload){
+            state.currentJoke = payload
+            state.allJokes.push(payload)
+        }
     },
     actions:{
-
+        //
     },
     modules:{
 
+    },
+    getters:{
+        getCurrentJoke(state){
+            return state.currentJoke;
+        }
     }
 })
