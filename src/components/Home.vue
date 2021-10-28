@@ -3,7 +3,7 @@
         <h2 class="text-xl text-blue-600 font-extrabold">Can i have a dad joke?</h2>
         <h3 class="text-3xl text-black pt-5 pb-5">{{joke}}</h3>
 
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-10 focus:outline-none">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-10 focus:outline-none" @click="addJoke()">
             New Joke
         </button>
 
@@ -19,6 +19,12 @@ export default {
         }
     },
 
+    methods:{
+        addJoke(){
+            console.log("get new joke clicked");
+            this.$store.dispatch('setCurrentJoke');
+        }
+    },
  computed:{
         joke(){
             return this.$store.getters.getCurrentJoke;
