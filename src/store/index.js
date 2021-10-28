@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state:{
-        currentJoke:'This is a joke',
+        currentJoke:'This is a very serious joke',
         allJokes:[]
     },
     mutations:{
