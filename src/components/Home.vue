@@ -11,6 +11,9 @@
 </template>
 
 <script>
+
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
     name: "Home",
     data() {
@@ -20,15 +23,28 @@ export default {
     },
 
     methods:{
-        addJoke(){
-            console.log("get new joke clicked");
-            this.$store.dispatch('setCurrentJoke');
-        }
+        ...mapActions({ addJoke: 'setCurrentJoke' }),
+
+       
+        //  ...mapActions([ 'setCurrentJoke' ]),
+
+        // addJoke(){
+            
+        //     console.log("get new joke clicked");
+        //     // this.$store.dispatch('setCurrentJoke');
+        //     this.setCurrentJoke();
+        // }
     },
  computed:{
-        joke(){
-            return this.$store.getters.getCurrentJoke;
-        }
+        ...mapGetters({joke: "getCurrentJoke"}),
+        //or if mapGetters is ...mapGetters(['getCurrentJoke'])
+
+        // joke(){ 
+        //     return this.getCurrentJoke;
+        // }
+        // joke(){
+        //     return this.$store.getters.getCurrentJoke;
+        // }
     },
 
     mounted(){
