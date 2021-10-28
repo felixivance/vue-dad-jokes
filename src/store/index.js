@@ -3,10 +3,12 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+const url = "https://icanhazdadjoke.com";
+const headers = { Accept : 'application/json'}
 
 export default new Vuex.Store({
     state:{
-        currentJoke:'This is a very serious joke',
+        currentJoke:'',
         allJokes:[]
     },
     mutations:{
@@ -17,7 +19,16 @@ export default new Vuex.Store({
         }
     },
     actions:{
-        //
+        //asyncronous requests
+       async setCurrentJoke(state){
+            const joke = await fetch(url, {headers});
+            const j = await joke.json();
+
+            state.commit('setCurrentJoke', j.joke);
+
+            //to change an action you do .dispatch to change a mutation is .commit
+
+        }
     },
     modules:{
 
